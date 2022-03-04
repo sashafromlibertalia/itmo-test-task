@@ -7,6 +7,12 @@ This project is built with Next.js, styled-components, jest and uses [EFA](https
 git clone https://github.com/sashafromlibertalia/itmo-test-task.git
 ```
 
+## Restore all dependencies
+```bash
+npm install
+```
+
+
 ## Run in dev mode
 
 ```bash
