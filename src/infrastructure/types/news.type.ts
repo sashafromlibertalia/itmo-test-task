@@ -1,7 +1,7 @@
 export type NewsModel = {
     id: number,
     title: string,
-    img_url: string,
+    image_big: string,
     url: string
-    date: Date
+    date: string;
 }

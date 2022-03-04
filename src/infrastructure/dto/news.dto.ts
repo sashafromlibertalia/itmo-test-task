@@ -1,4 +1,4 @@
-const enum LanguagesEnum {
+export const enum LanguagesEnum {
     RUSSIAN = 1,
     ENGLISH
 }

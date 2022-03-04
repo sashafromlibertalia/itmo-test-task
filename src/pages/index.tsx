@@ -10,7 +10,7 @@ const Home: NextPage = () => {
             <Head>
                 <title>ITMO test task</title>
                 <meta name="theme" content="white"/>
-                <meta name="viewport" content="width=device-width, initial-scale"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <meta name="description" content="Built with love by @sashafromlibertalia"/>
             </Head>
             <Header/>

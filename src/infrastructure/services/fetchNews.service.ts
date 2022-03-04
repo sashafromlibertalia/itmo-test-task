@@ -3,15 +3,10 @@ import { NewsModel } from "../types/news.type";
 import { FetchQuery } from "../dto/fetch.dto";
 
 export class FetchNewsService implements IFetcher {
-    async fetchData(url: string, query?: FetchQuery): Promise<NewsModel[] | void> {
-        try {
-            if (query) console.log(Object.entries(query))
-            const response = await fetch(`${url}?`)
-            const data = response.json()
+    async fetchData(url: string, query?: FetchQuery): Promise<NewsModel[]> {
+        if (query) console.log(Object.entries(query))
+        const response = await fetch(`${url}`)
 
-            console.log(data, query)
-        } catch (e) {
-            console.error(e)
-        }
+        return (await response.json()).news as NewsModel[]
     }
 }
