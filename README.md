@@ -1,6 +1,6 @@
 # ITMO test task
 
-This project is built with Next.js, styled-components, jest and uses [EFA](https://michalzalecki.com/elegant-frontend-architecture/#layered-architecture-top-level) architecture
+This project is built with Next.js, styled-components, jest and uses [EFA](https://michalzalecki.com/elegant-frontend-architecture) architecture
 
 ## Download project
 ```bash
