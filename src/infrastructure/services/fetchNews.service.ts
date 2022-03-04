@@ -1,18 +1,15 @@
-import {IFetcher} from "../interfaces/fetchData.interface";
-import {NewsType} from "../../domain/news/news.type";
-import {NewsFetchProps} from "../dto/news.props";
+import { IFetcher } from "../interfaces/fetchData.interface";
+import { NewsModel } from "../types/news.type";
+import { FetchQuery } from "../dto/fetch.dto";
 
 export class FetchNewsService implements IFetcher {
-    constructor() {
-    }
-
-    async fetchData(url: string, props: NewsFetchProps): Promise<NewsType[] | void> {
+    async fetchData(url: string, query?: FetchQuery): Promise<NewsModel[] | void> {
         try {
-            console.log(Object.entries(props))
+            if (query) console.log(Object.entries(query))
             const response = await fetch(`${url}?`)
             const data = response.json()
 
-            console.log(data, props)
+            console.log(data, query)
         } catch (e) {
             console.error(e)
         }

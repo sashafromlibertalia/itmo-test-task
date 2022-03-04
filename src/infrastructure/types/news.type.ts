@@ -1,4 +1,4 @@
-export type NewsType = {
+export type NewsModel = {
     id: number,
     title: string,
     img_url: string,

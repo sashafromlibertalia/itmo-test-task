@@ -1,16 +1,21 @@
-import type {NextPage} from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../../styles/modules/Main.module.css'
+import Header from "../domain/header/Header";
+import CardGrid from "../domain/grid/CardGrid";
 
 const Home: NextPage = () => {
     return (
-        <div className={styles.container}>
+        <div>
             <Head>
                 <title>ITMO test task</title>
+                <meta name="theme" content="white"/>
+                <meta name="viewport" content="width=device-width, initial-scale"/>
                 <meta name="description" content="Built with love by @sashafromlibertalia"/>
             </Head>
-            Hello
+            <Header/>
+            <h1 className={styles.text}>Новости и события</h1>
+            <CardGrid/>
         </div>
     )
 }

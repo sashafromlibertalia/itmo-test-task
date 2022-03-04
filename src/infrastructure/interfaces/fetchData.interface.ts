@@ -1,6 +1,6 @@
-import {NewsType} from "../../domain/news/news.type";
-import {NewsFetchProps} from "../dto/news.props";
+import { NewsModel } from "../types/news.type";
+import { FetchQuery } from "../dto/fetch.dto";
 
 export interface IFetcher {
-    fetchData(url: string, props?: NewsFetchProps): Promise<NewsType[] | void>
+    fetchData(url: string, query?: FetchQuery): Promise<NewsModel[] | void>
 }

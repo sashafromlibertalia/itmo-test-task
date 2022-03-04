@@ -3,6 +3,7 @@ const enum LanguagesEnum {
     ENGLISH
 }
 
-export type NewsFetchProps = {
+export type NewsFetchQuery = {
     language_id?: LanguagesEnum,
+    per_page?: number,
 }
