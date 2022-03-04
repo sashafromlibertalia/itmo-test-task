@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NewsModel } from "../../infrastructure/types/news.type";
 import GridContainer from "./layout/GridContainer";
 import { FetchNewsService } from "../../infrastructure/services/fetchNews.service";
-import { LanguagesEnum, NewsFetchQuery } from "../../infrastructure/dto/news.dto";
+import { LanguagesEnum, NewsFetchQuery } from "../../infrastructure/dto/news.query";
 
 const CardGrid = () => {
     const URL = "https://news.itmo.ru/api/news/list/?ver=2.0"
@@ -13,7 +13,7 @@ const CardGrid = () => {
         const TakeItemsPerPage = 9
 
         const query: NewsFetchQuery = {
-            language_id: LanguagesEnum.ENGLISH,
+            language_id: LanguagesEnum.RUSSIAN,
             per_page: TakeItemsPerPage
         }
 
