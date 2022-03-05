@@ -13,7 +13,7 @@ const Card = (props: CardProps) => {
         year: "numeric",
         month: "long",
         day: "numeric"
-    })
+    }) || "С датой что-то грустное случилось"
 
     const formattedTitle = () => {
         const text = props.title
