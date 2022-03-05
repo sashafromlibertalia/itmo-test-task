@@ -30,7 +30,7 @@ const Card = (props: CardProps) => {
                     alt="news-cover" layout="fill" objectFit="cover"/>
             </ImageContainer>
             <CardBody>
-                <p className={styles.secondaryTextColor}>{formattedDate}</p>
+                <p className={styles.secondaryText}>{formattedDate}</p>
                 <h4 className={`${styles.textColor} ${styles.cardTitle}`}>{formattedTitle()}</h4>
             </CardBody>
         </CardContainer>

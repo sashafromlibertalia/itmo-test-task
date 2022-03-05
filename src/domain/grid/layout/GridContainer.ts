@@ -5,6 +5,10 @@ const GridContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 550px) {
+    justify-content: center;
+  }
 `
 
 export default GridContainer

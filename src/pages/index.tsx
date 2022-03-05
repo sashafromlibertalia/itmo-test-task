@@ -15,7 +15,7 @@ const Home: NextPage = () => {
             </Head>
             <Header/>
             <div className={styles.container}>
-                <h1 className={styles.textColor}>Новости и события</h1>
+                <h1 className={`${styles.title} ${styles.textColor}`}>Новости и события</h1>
                 <CardGrid/>
             </div>
         </div>
