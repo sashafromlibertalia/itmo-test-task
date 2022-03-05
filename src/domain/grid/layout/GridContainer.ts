@@ -5,7 +5,6 @@ const GridContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 0 calc((80% - (22rem * 3)) / 2);
 `
 
 export default GridContainer
