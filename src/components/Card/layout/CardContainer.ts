@@ -12,7 +12,8 @@ const CardContainer = styled.div`
   margin-bottom: 2rem;
   box-shadow: var(--card-shadow);
   border-radius: 1rem;
-
+  transition: 200ms ease background-color;
+  
   @media screen and (max-width: 300px) {
     min-height: 18rem;
   }
@@ -24,6 +25,10 @@ const CardContainer = styled.div`
   @media screen and (min-width: 730px) and (max-width: 850px) {
     min-width: 18rem;
     min-height: 30rem;
+  }
+  
+  &:hover {
+    background: lightgray;
   }
 `
 

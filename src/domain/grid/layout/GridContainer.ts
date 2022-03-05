@@ -6,7 +6,7 @@ const GridContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 730px) {
     justify-content: center;
   }
 `

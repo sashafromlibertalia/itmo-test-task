@@ -6,7 +6,7 @@ import animations from "../../../../styles/modules/Animation.module.css";
 
 const CardSkeleton = () => {
     return (
-        <CardContainer>
+        <CardContainer style={{ pointerEvents: "none" }}>
             <ImageContainer>
                 <div className={`${animations.skeleton} ${animations.skeletonImage}`}/>
             </ImageContainer>
