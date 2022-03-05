@@ -3,8 +3,8 @@ import { NewsModel } from "../../infrastructure/models/news.model";
 import GridContainer from "./layout/GridContainer";
 import { FetchNewsService } from "../../infrastructure/services/fetchNews.service";
 import { LanguagesEnum, NewsFetchQuery } from "../../infrastructure/dto/news.query";
-import Card from "../../ui/Card/Card";
-import CardSkeleton from "../../ui/Card/skeleton/CardSkeleton";
+import Card from "../../components/Card/Card";
+import CardSkeleton from "../../components/Card/skeleton/CardSkeleton";
 
 const CardGrid = () => {
     const URL = "https://news.itmo.ru/api/news/list/?ver=2.0"

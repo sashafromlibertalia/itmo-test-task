@@ -40,3 +40,31 @@
     padding-top: 2rem;
     margin: 0 auto;
 }
+
+
+.switcherArrow {
+    height: 4px;
+    position: relative;
+    width: 1rem;
+}
+
+.switcherArrow:before, .switcherArrow:after {
+    content: "";
+    background: #fff;
+    border-radius: 4px;
+    position: absolute;
+    height: 2px;
+    width: 9px;
+}
+
+.switcherArrow:before {
+    right: 0;
+    bottom: 0;
+    transform: rotate(45deg);
+}
+
+.switcherArrow:after {
+    right: -5px;
+    top: 2px;
+    transform: rotate(-45deg);
+}
