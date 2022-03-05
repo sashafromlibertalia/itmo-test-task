@@ -1,0 +1,35 @@
+.skeleton {
+    animation-duration: 1.1s;
+    animation-name: skeleton-loading;
+    animation-iteration-count: infinite;
+}
+
+.skeletonDate {
+    width: 100%;
+    height: 1rem;
+}
+
+.skeletonText {
+    width: 100%;
+    height: 10rem;
+}
+
+.skeletonImage {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes skeleton-loading {
+    0%, 100% {
+        opacity: 1;
+        border-radius: 4px;
+        color: #f3f3f3;
+        background: #f3f3f3;
+    }
+
+    50%  {
+        opacity: 0.8;
+        color: #dadada;
+        background: #dadada;
+    }
+}

@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
+  min-width: 20rem;
+  min-height: 25rem;
+  width: 22vw;
+  height: 25vw;
   display: flex;
   flex-direction: column;
-  width: 20rem;
   cursor: pointer;
   overflow: hidden;
-  height: 25rem;
   margin-bottom: 2rem;
   box-shadow: var(--card-shadow);
   border-radius: 1rem;

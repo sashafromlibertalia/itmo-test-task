@@ -4,11 +4,13 @@ import GridContainer from "./layout/GridContainer";
 import { FetchNewsService } from "../../infrastructure/services/fetchNews.service";
 import { LanguagesEnum, NewsFetchQuery } from "../../infrastructure/dto/news.query";
 import Card from "../../ui/Card/Card";
+import CardSkeleton from "../../ui/Card/Skeleton/CardSkeleton";
 
 const CardGrid = () => {
     const URL = "https://news.itmo.ru/api/news/list/?ver=2.0"
     const fetchService = new FetchNewsService()
     const [cards, setCards] = useState<NewsModel[]>([])
+    const [fetched, setFetched] = useState<boolean>(false)
 
     const fetchNews = async (): Promise<NewsModel[]> => {
         const TakeItemsPerPage = 9
@@ -22,26 +24,35 @@ const CardGrid = () => {
     }
 
     useEffect(() => {
-        fetchNews()
-            .then(data => {
-                setCards(data!)
-            })
-            .catch((e) => {
-                console.error(e)
-            })
+        setFetched(false)
+
+        // For skeleton demo
+        setTimeout(() => {
+            fetchNews()
+                .then(data => {
+                    setCards(data!)
+                    setFetched(true)
+                })
+                .catch((e) => {
+                    console.error(e)
+                })
+        }, 1000)
     }, [])
 
     return (
         <GridContainer>
             {
-                cards.map(card => {
-                    return <Card key={card.id}
-                        date={card.date}
-                        id={card.id}
-                        image_big={card.image_big}
-                        title={card.title}
-                        url={card.url}/>
-                })
+                fetched ?
+                    cards.map((card, index) => {
+                        return <Card key={index}
+                            date={card.date}
+                            id={card.id || 0} isFetched={fetched}
+                            image_big={card.image_big}
+                            title={card.title}
+                            url={card.url}/>
+                    }) : new Array(9).fill(1).map((_, index) => {
+                        return <CardSkeleton key={index}/>
+                    })
             }
         </GridContainer>
     );
