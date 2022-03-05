@@ -8,5 +8,11 @@
 
 .cardTitle {
     font-size: 1.2rem;
-    font-weight: normal;
+    font-weight: 500;
+}
+
+.container {
+    width: 80%;
+    padding-top: 2rem;
+    margin: 0 auto;
 }

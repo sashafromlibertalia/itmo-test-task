@@ -7,11 +7,21 @@ import { CardProps } from "./card.props";
 import styles from '../../../styles/modules/Main.module.css'
 
 const Card = (props: CardProps) => {
+    const MaximumCharactersToDisplay = 148
+
     const formattedDate = new Date(props.date).toLocaleDateString("ru", {
         year: "numeric",
         month: "long",
         day: "numeric"
     })
+
+    const formattedTitle = () => {
+        const text = props.title
+
+        return text.length > MaximumCharactersToDisplay
+            ? `${text.slice(0, MaximumCharactersToDisplay - 3)}...`
+            : text
+    }
 
     return (
         <CardContainer>
@@ -20,8 +30,8 @@ const Card = (props: CardProps) => {
                     alt="news-cover" layout="fill" objectFit="cover"/>
             </ImageContainer>
             <CardBody>
-                <p className={styles.secondaryTextColor}>{formattedDate}</p>
-                <h4 className={`${styles.textColor} ${styles.cardTitle}`}>{props.title}</h4>
+                <p className={styles.secondaryTextColor}>{ formattedDate }</p>
+                <h4 className={`${styles.textColor} ${styles.cardTitle}`}>{formattedTitle()}</h4>
             </CardBody>
         </CardContainer>
     );

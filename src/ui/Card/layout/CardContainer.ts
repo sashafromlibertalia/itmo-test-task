@@ -7,6 +7,7 @@ const CardContainer = styled.div`
   cursor: pointer;
   overflow: hidden;
   height: 25rem;
+  margin-bottom: 2rem;
   box-shadow: var(--card-shadow);
   border-radius: 1rem;
 `
