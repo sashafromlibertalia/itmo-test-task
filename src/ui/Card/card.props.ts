@@ -1,3 +1,3 @@
-import { NewsModel } from "../../infrastructure/types/news.type";
+import { NewsModel } from "../../infrastructure/models/news.model";
 
 export type CardProps = NewsModel

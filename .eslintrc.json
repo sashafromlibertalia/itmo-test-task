@@ -19,7 +19,19 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "indent": ["error", 4, { "MemberExpression": 0 }],
-        "object-curly-spacing": ["error", "always"]
+        "indent": [
+            "error",
+            4
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "object-property-newline": [
+            "error",
+            {
+                "allowAllPropertiesOnSameLine": true
+            }
+        ]
     }
 }
