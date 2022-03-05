@@ -1,9 +1,19 @@
 import styled from "styled-components";
 
 const LanguageCell = styled.span`
-  display: flex;
+  width: 100%;
+  cursor: pointer;
   height: 100%;
-  color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 200ms background-color ease;
+  color: var(--text-default-color);
+
+  &:hover {
+    background: #F2F4FF;
+    color: var(--text-default-color);
+  }
 `
 
 export default LanguageCell
