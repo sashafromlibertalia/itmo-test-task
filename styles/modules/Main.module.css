@@ -1,7 +1,12 @@
-.text {
+.textColor {
     color: var(--text-default-color);
 }
 
-.secondary-text {
+.secondaryTextColor {
     color: var(--text-secondary-color);
+}
+
+.cardTitle {
+    font-size: 1.2rem;
+    font-weight: normal;
 }

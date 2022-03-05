@@ -14,7 +14,7 @@ const Home: NextPage = () => {
                 <meta name="description" content="Built with love by @sashafromlibertalia"/>
             </Head>
             <Header/>
-            <h1 className={styles.text}>Новости и события</h1>
+            <h1 className={styles.textColor}>Новости и события</h1>
             <CardGrid/>
         </div>
     )
