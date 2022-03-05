@@ -5,6 +5,8 @@ import { FetchNewsService } from "../../infrastructure/services/fetchNews.servic
 import { LanguagesEnum, NewsFetchQuery } from "../../infrastructure/dto/news.query";
 import Card from "../../components/Card/Card";
 import CardSkeleton from "../../components/Card/skeleton/CardSkeleton";
+import { DefaultStateModel } from "../../infrastructure/store/store.model";
+import { useSelector } from "react-redux";
 
 const CardGrid = () => {
     const URL = "https://news.itmo.ru/api/news/list/?ver=2.0"
@@ -12,11 +14,13 @@ const CardGrid = () => {
     const [cards, setCards] = useState<NewsModel[]>([])
     const [fetched, setFetched] = useState<boolean>(false)
 
+    const locale = useSelector<DefaultStateModel>(state => state.locale) as LanguagesEnum
+
     const fetchNews = async (): Promise<NewsModel[]> => {
         const TakeItemsPerPage = 9
 
         const query: NewsFetchQuery = {
-            language_id: LanguagesEnum.RUSSIAN,
+            language_id: locale,
             per_page: TakeItemsPerPage
         }
 

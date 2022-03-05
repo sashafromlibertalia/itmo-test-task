@@ -4,8 +4,7 @@ import { FetchQuery } from "../dto/fetch.query";
 
 export class FetchNewsService implements IFetcher {
     async fetchData(url: string, query?: FetchQuery): Promise<NewsModel[]> {
-        // Converts query to pairs [[key, value]] and merges into single query string
-        const queryString = `&${Object.entries(query || {}).map(value => `${value[0]}=${value[1]}`).join('&')}` || ""
+        const queryString = `&language_id=${query!.language_id}&per_page=${query!.per_page}` || ""
         const response = await fetch(`${url}${queryString}`)
 
         return (await response.json()).news as NewsModel[]
