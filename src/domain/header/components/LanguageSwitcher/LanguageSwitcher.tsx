@@ -7,7 +7,7 @@ import styles from "../../../../../styles/modules/Main.module.css"
 import { LanguagesEnum } from "../../../../infrastructure/dto/news.query";
 import { useDispatch } from "react-redux";
 import { formatLocale } from "../../../../infrastructure/helpers/locale.formatter";
-import { Actions, changeLocaleAction } from "../../../../infrastructure/store/locale/actions";
+import { changeLocaleAction } from "../../../../infrastructure/store/locale/actions";
 import { useTypedSelector } from "../../../../infrastructure/hooks/useTypedSelector";
 
 const LanguageSwitcher = () => {
