@@ -23,7 +23,6 @@ const News = () => {
             <Header/>
             <div className={styles.container}>
                 <h1 className={`${styles.title} ${styles.textColor}`}>Новость #{id}</h1>
-                <p></p>
                 <div dangerouslySetInnerHTML={{ __html: currentNews.lead }}/>
             </div>
         </>

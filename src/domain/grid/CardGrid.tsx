@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GridContainer from "./layout/GridContainer";
 import { FetchNewsService } from "../../infrastructure/services/fetchNews.service";
 import { NewsFetchQuery } from "../../infrastructure/dto/news.query";
