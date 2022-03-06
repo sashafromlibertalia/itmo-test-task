@@ -8,3 +8,5 @@ export type Action = {
 export const enum Actions {
     FETCH_NEWS = "FETCH_NEWS",
 }
+
+export const fetchNewsAction = (payload: NewsModel[]) => ({ type: Actions.FETCH_NEWS, payload: payload })

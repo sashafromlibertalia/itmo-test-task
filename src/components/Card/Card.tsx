@@ -10,11 +10,13 @@ import Link from 'next/link'
 const Card = (props: CardProps) => {
     const MaximumCharactersToDisplay = 148
 
-    const formattedDate = new Date(props.date).toLocaleDateString("ru", {
+    const formattedDate = new Date(props.date).toLocaleDateString("ru-RU", {
         year: "numeric",
         month: "long",
         day: "numeric"
     }) || "С датой что-то грустное случилось"
+
+    console.log(props.date, formattedDate)
 
     const formattedTitle = () => {
         const text = props.title

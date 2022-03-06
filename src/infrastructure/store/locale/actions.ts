@@ -8,3 +8,5 @@ export type Action = {
 export const enum Actions {
     CHANGE_LOCALE = "CHANGE_LOCALE",
 }
+
+export const changeLocaleAction = (payload: LanguagesEnum) => ({ type: Actions.CHANGE_LOCALE, payload: payload })

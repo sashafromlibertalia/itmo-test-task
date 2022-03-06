@@ -7,7 +7,7 @@ import styles from "../../../../../styles/modules/Main.module.css"
 import { LanguagesEnum } from "../../../../infrastructure/dto/news.query";
 import { useDispatch } from "react-redux";
 import { formatLocale } from "../../../../infrastructure/helpers/locale.formatter";
-import { Actions } from "../../../../infrastructure/store/locale/actions";
+import { Actions, changeLocaleAction } from "../../../../infrastructure/store/locale/actions";
 import { useTypedSelector } from "../../../../infrastructure/hooks/useTypedSelector";
 
 const LanguageSwitcher = () => {
@@ -23,10 +23,7 @@ const LanguageSwitcher = () => {
         setIsOpen(false)
         if (updatedLocale === locale) return
 
-        dispatch({
-            type: Actions.CHANGE_LOCALE,
-            payload: updatedLocale
-        })
+        dispatch(changeLocaleAction(updatedLocale))
         setIsOpen(false)
     }
 
