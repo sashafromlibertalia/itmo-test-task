@@ -41,7 +41,6 @@ const CardGrid = () => {
                     console.error(e)
                 })
         }, 1000)
-        console.log(locale)
     },[locale])
 
     return (
