@@ -6,4 +6,5 @@ export const enum LanguagesEnum {
 export type NewsFetchQuery = {
     language_id?: LanguagesEnum,
     per_page?: number,
+    lead?: boolean
 }

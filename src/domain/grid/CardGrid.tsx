@@ -1,60 +1,62 @@
-import React, { useEffect, useState } from 'react';
-import { NewsModel } from "../../infrastructure/models/news.model";
+import React, { useEffect, useMemo, useState } from 'react';
 import GridContainer from "./layout/GridContainer";
 import { FetchNewsService } from "../../infrastructure/services/fetchNews.service";
-import { LanguagesEnum, NewsFetchQuery } from "../../infrastructure/dto/news.query";
+import { NewsFetchQuery } from "../../infrastructure/dto/news.query";
 import Card from "../../components/Card/Card";
 import CardSkeleton from "../../components/Card/skeleton/CardSkeleton";
-import { DefaultStateModel } from "../../infrastructure/store/store.model";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Actions } from "../../infrastructure/store/news/actions";
+import { useTypedSelector } from "../../infrastructure/hooks/useTypedSelector";
 
 const CardGrid = () => {
-    const URL = "https://news.itmo.ru/api/news/list/?ver=2.0"
-    const fetchService = new FetchNewsService()
-    const [cards, setCards] = useState<NewsModel[]>([])
+    const API_URL = "https://news.itmo.ru/api/news/list/?ver=2.0"
+    const TakeItemsPerPage = 9
+
     const [fetched, setFetched] = useState<boolean>(false)
 
-    const locale = useSelector<DefaultStateModel>(state => state.locale) as LanguagesEnum
-
-    const fetchNews = async (): Promise<NewsModel[]> => {
-        const TakeItemsPerPage = 9
-
-        const query: NewsFetchQuery = {
-            language_id: locale,
-            per_page: TakeItemsPerPage
-        }
-
-        return await fetchService.fetchData(URL, query)
-    }
+    const dispatch = useDispatch()
+    const { locale } = useTypedSelector(state => state.locale)
+    const { news } = useTypedSelector(state => state.news)
 
     useEffect(() => {
         setFetched(false)
 
+        const fetchService = new FetchNewsService()
+        const query: NewsFetchQuery = {
+            language_id: locale,
+            per_page: TakeItemsPerPage,
+            lead: true
+        }
+
         // For skeleton demo
-        setTimeout(() => {
-            fetchNews()
+        setTimeout(async () => {
+            await fetchService
+                .fetchData(API_URL, query)
                 .then(data => {
-                    setCards(data!)
+                    dispatch({
+                        type: Actions.FETCH_NEWS,
+                        payload: data
+                    })
                     setFetched(true)
                 })
                 .catch((e) => {
                     console.error(e)
                 })
         }, 1000)
-    },[locale])
+    },[dispatch, locale])
 
     return (
         <GridContainer>
             {
                 fetched ?
-                    cards.map((card, index) => {
+                    news.map((model, index) => {
                         return <Card key={index}
-                            date={card.date}
-                            id={card.id || 0} isFetched={fetched}
-                            image_big={card.image_big}
-                            title={card.title}
-                            url={card.url}/>
-                    }) : new Array(9).fill(1).map((_, index) => {
+                            date={model.date}
+                            id={model.id}
+                            image_big={model.image_big}
+                            title={model.title}
+                            lead={model.lead}/>
+                    }) : new Array(TakeItemsPerPage).fill(1).map((_, index) => {
                         return <CardSkeleton key={index}/>
                     })
             }

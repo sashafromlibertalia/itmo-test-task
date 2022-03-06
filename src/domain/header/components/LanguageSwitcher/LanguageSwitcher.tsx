@@ -5,15 +5,14 @@ import SelectedCell from "./layout/SelectedCell";
 import Menu from "./layout/Menu";
 import styles from "../../../../../styles/modules/Main.module.css"
 import { LanguagesEnum } from "../../../../infrastructure/dto/news.query";
-import { useDispatch, useSelector } from "react-redux";
-import { DefaultStateModel } from "../../../../infrastructure/store/store.model";
+import { useDispatch } from "react-redux";
 import { formatLocale } from "../../../../infrastructure/helpers/locale.formatter";
-import { Action } from "../../../../infrastructure/store/reducer";
-import { Actions } from "../../../../infrastructure/store/actions";
+import { Actions } from "../../../../infrastructure/store/locale/actions";
+import { useTypedSelector } from "../../../../infrastructure/hooks/useTypedSelector";
 
 const LanguageSwitcher = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const locale = useSelector<DefaultStateModel>(state => state.locale) as LanguagesEnum
+    const { locale } = useTypedSelector(state => state.locale)
     const dispatch = useDispatch()
 
     const toggleLanguages = () => {
@@ -23,12 +22,11 @@ const LanguageSwitcher = () => {
     const setLocale = (updatedLocale: LanguagesEnum) => {
         setIsOpen(false)
         if (updatedLocale === locale) return
-        
-        const update: Action = {
+
+        dispatch({
             type: Actions.CHANGE_LOCALE,
             payload: updatedLocale
-        }
-        dispatch(update)
+        })
         setIsOpen(false)
     }
 

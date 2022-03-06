@@ -5,6 +5,7 @@ import ImageContainer from "./layout/ImageContainer";
 import CardBody from "./layout/CardBody";
 import { CardProps } from "./card.props";
 import styles from '../../../styles/modules/Main.module.css'
+import Link from 'next/link'
 
 const Card = (props: CardProps) => {
     const MaximumCharactersToDisplay = 148
@@ -24,16 +25,17 @@ const Card = (props: CardProps) => {
     }
 
     return (
-        <CardContainer>
-            <ImageContainer>
-                <Image src={props.image_big}
-                    alt="news-cover" layout="fill" objectFit="cover"/>
-            </ImageContainer>
-            <CardBody>
-                <p className={styles.secondaryText}>{formattedDate}</p>
-                <h4 className={`${styles.textColor} ${styles.cardTitle}`}>{formattedTitle()}</h4>
-            </CardBody>
-        </CardContainer>
+        <Link href={`/news/${props.id}`} passHref>
+            <CardContainer>
+                <ImageContainer>
+                    <Image src={props.image_big} alt="news-cover" layout="fill" objectFit="cover"/>
+                </ImageContainer>
+                <CardBody>
+                    <p className={styles.secondaryText}>{formattedDate}</p>
+                    <h4 className={`${styles.textColor} ${styles.cardTitle}`}>{formattedTitle()}</h4>
+                </CardBody>
+            </CardContainer>
+        </Link>
     );
 };
 
