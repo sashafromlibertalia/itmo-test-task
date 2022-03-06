@@ -1,4 +1,4 @@
-import { NewsModel } from "../models/news.model";
+import { NewsModel } from "../dto/news.model";
 import { FetchQuery } from "../dto/fetch.query";
 
 export interface IFetcher {

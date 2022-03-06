@@ -1,4 +1,4 @@
-import { NewsModel } from "../../models/news.model";
+import { NewsModel } from "../../dto/news.model";
 import { Action, Actions } from "./actions";
 
 export type DefaultNewsState = {

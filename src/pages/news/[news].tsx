@@ -12,13 +12,15 @@ const News = () => {
     const id = router.query.news
     const currentNews = news.find(item => item.id.toString() === id)
 
-
-    if (!currentNews && fetched) return ( <>
-        <Header/>
-        <div className={styles.container}>
-            <h1 className={`${styles.title} ${styles.textColor}`}>Такой новости нет</h1>
-        </div>
-    </>)
+    if (!currentNews && fetched)
+        return (
+            <>
+                <Header/>
+                <div className={styles.container}>
+                    <h1 className={`${styles.title} ${styles.textColor}`}>Такой новости нет</h1>
+                </div>
+            </>
+        )
 
     return (
         <>
