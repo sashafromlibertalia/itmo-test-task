@@ -10,13 +10,13 @@ import Link from 'next/link'
 const Card = (props: CardProps) => {
     const MaximumCharactersToDisplay = 148
 
-    const formattedDate = new Date(props.date).toLocaleDateString("ru-RU", {
+
+    // Slice is used for fetching date in format yyyy-MM-dd (due to Safari bug)
+    const formattedDate = new Date(Date.parse(props.date.slice(0, 10))).toLocaleDateString("ru-RU", {
         year: "numeric",
         month: "long",
         day: "numeric"
-    }) || "С датой что-то грустное случилось"
-
-    console.log(props.date, formattedDate)
+    })
 
     const formattedTitle = () => {
         const text = props.title
