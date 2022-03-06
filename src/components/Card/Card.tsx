@@ -6,17 +6,21 @@ import CardBody from "./layout/CardBody";
 import { CardProps } from "./card.props";
 import styles from '../../../styles/modules/Main.module.css'
 import Link from 'next/link'
+import { useTypedSelector } from "../../infrastructure/hooks/useTypedSelector";
+import { LanguagesEnum } from "../../infrastructure/dto/news.query";
 
 const Card = (props: CardProps) => {
+    const { locale } = useTypedSelector(state => state.locale)
+
     const MaximumCharactersToDisplay = 148
 
-
     // Slice is used for fetching date in format yyyy-MM-dd (due to Safari bug)
-    const formattedDate = new Date(Date.parse(props.date.slice(0, 10))).toLocaleDateString("ru-RU", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    })
+    const formattedDate = new Date(Date.parse(props.date.slice(0, 10)))
+        .toLocaleDateString(locale === LanguagesEnum.RUSSIAN ? "ru-RU" : "en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        })
 
     const formattedTitle = () => {
         const text = props.title
