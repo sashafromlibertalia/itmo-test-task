@@ -1,7 +1,7 @@
 import CardGrid from "../src/domain/grid/CardGrid";
 import { render, screen } from '@testing-library/react'
 import { Provider } from "react-redux";
-import { store } from "next/dist/build/output/store";
+import { store } from "../src/infrastructure/store/store"
 
 describe('Test card grid', () => {
     test('Renders grid', () => {
