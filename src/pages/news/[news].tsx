@@ -1,40 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from "../../../src/domain/header/Header"
 import styles from "../../../styles/modules/Main.module.css"
 import { useRouter } from "next/router";
-import { useTypedSelector } from "../../infrastructure/hooks/useTypedSelector";
-import { fetchNews } from "../../infrastructure/store/news/fetchNews";
-import { useDispatch } from "react-redux";
 import animations from "../../../styles/modules/Animation.module.css";
+import { useNewsFetcher } from "../../infrastructure/hooks/useNewsFetcher";
 
 const News = () => {
     const router = useRouter()
-    const [fetched, setFetched] = useState<boolean>(false)
-
-    const dispatch = useDispatch()
-    const { news } = useTypedSelector(state => state.news)
+    const { fetched, news } = useNewsFetcher()
 
     const id = router.query.news
     const currentNews = news.find(item => item.id.toString() === id)
-    const { locale } = useTypedSelector(state => state.locale)
-
-    useEffect(() => {
-        if (!news.length) {
-            setFetched(false)
-
-            setTimeout(async () => {
-                await dispatch(fetchNews({
-                    query: {
-                        language_id: locale
-                    }
-                }))
-                setFetched(true)
-            }, 1000)
-            return
-        }
-
-        setFetched(true)
-    },[dispatch, locale, news])
 
 
     if (!currentNews && fetched) return ( <>

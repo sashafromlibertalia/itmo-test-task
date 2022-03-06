@@ -1,30 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import GridContainer from "./layout/GridContainer";
 import Card from "../../components/Card/Card";
 import CardSkeleton from "../../components/Card/skeleton/CardSkeleton";
-import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../infrastructure/hooks/useTypedSelector";
-import { fetchNews } from "../../infrastructure/store/news/fetchNews";
+import { useNewsFetcher } from "../../infrastructure/hooks/useNewsFetcher";
 
 const CardGrid = () => {
-    const [fetched, setFetched] = useState<boolean>(false)
-
-    const dispatch = useDispatch()
-    const { locale } = useTypedSelector(state => state.locale)
-    const { news } = useTypedSelector(state => state.news)
-    
-    useEffect(() => {
-        setFetched(false)
-
-        setTimeout(async () => {
-            await dispatch(fetchNews({
-                query: {
-                    language_id: locale
-                }
-            }))
-            setFetched(true)
-        }, 1000)
-    },[dispatch, locale])
+    const { fetched, news } = useNewsFetcher()
 
     return (
         <GridContainer>
