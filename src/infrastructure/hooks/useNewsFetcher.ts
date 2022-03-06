@@ -23,5 +23,5 @@ export const useNewsFetcher = () => {
         }, 1000)
     },[dispatch, locale])
 
-    return {news, fetched}
+    return { news, fetched }
 }
