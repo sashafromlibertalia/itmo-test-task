@@ -1,4 +1,12 @@
-import { createStore } from "redux";
-import { reducer } from "./reducer";
+import { combineReducers, createStore } from "redux";
+import localeReducer from "./locale/localeReducer";
+import newsReducer from "./news/newsReducer";
 
-export const store = createStore(reducer)
+const appReducer = combineReducers({
+    locale: localeReducer,
+    news: newsReducer
+})
+
+export type AppState = ReturnType<typeof appReducer>
+
+export const store = createStore(appReducer)
